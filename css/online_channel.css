@@ -15,6 +15,7 @@ main {
   gap: 20px;
 }
 h1 {
+  font-size: 40px;
   color: rgb(128, 80, 18);
 }
 main section {

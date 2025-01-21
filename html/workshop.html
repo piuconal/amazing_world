@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop</title>
+  <link rel="icon" href="../assets/logo.jpg">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/workshop.css">
+  <div id='snowflakeContainer'>
+    <p class='snowflake'>❄</p>
+  </div>
+  <script style='text/javascript'>
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"]; var transformProperty = getSupportedPropertyName(transforms); var snowflakes = []; var browserWidth; var browserHeight; var numberOfSnowflakes = 50; var resetPosition = false; function setup() { window.addEventListener("DOMContentLoaded", generateSnowflakes, false); window.addEventListener("resize", setResetFlag, false) } setup(); function getSupportedPropertyName(b) { for (var a = 0; a < b.length; a++) { if (typeof document.body.style[b[a]] != "undefined") { return b[a] } } return null } function Snowflake(b, a, d, e, c) { this.element = b; this.radius = a; this.speed = d; this.xPos = e; this.yPos = c; this.counter = 0; this.sign = Math.random() < 0.5 ? 1 : -1; this.element.style.opacity = 0.5 + Math.random(); this.element.style.fontSize = 4 + Math.random() * 30 + "px" } Snowflake.prototype.update = function () { this.counter += this.speed / 5000; this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40; this.yPos += Math.sin(this.counter) / 40 + this.speed / 30; setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos)); if (this.yPos > browserHeight) { this.yPos = -50 } }; function setTranslate3DTransform(a, c, b) { var d = "translate3d(" + c + "px, " + b + "px, 0)"; a.style[transformProperty] = d } function generateSnowflakes() { var b = document.querySelector(".snowflake"); var h = b.parentNode; browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var d = 0; d < numberOfSnowflakes; d++) { var j = b.cloneNode(true); h.appendChild(j); var e = getPosition(50, browserWidth); var a = getPosition(50, browserHeight); var c = 5 + Math.random() * 40; var g = 4 + Math.random() * 10; var f = new Snowflake(j, g, c, e, a); snowflakes.push(f) } h.removeChild(b); moveSnowflakes() } function moveSnowflakes() { for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.update() } if (resetPosition) { browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.xPos = getPosition(50, browserWidth); a.yPos = getPosition(50, browserHeight) } resetPosition = false } requestAnimationFrame(moveSnowflakes) } function getPosition(b, a) { return Math.round(-1 * b + Math.random() * (a + 2 * b)) } function setResetFlag(a) { resetPosition = true };
+  </script>
+</head>
+
+<body>
+  <div class="overlay"></div>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="../assets/cursor.png" alt="Logo">
+      <span>NHÓM 3</span>
+    </div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="famous_bakery.html">Famous Bakery</a>
+      <a href="online_channel.html">Online Channel</a>
+      <a href="workshop.html" id="active">Workshop</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <section>
+      <h1>Bánh Ngon Ít Ngọt (Cake By Uyen)</h1>
+      <ul>
+        <li>Cake by Uyen - Bánh Ngon Ít Ngọt là một workshop làm bánh quen thuộc đối với các bạn trẻ tại khu vực Thành
+          phố Hồ Chí Minh. Được mở vào năm 2021, Bánh Ngon Ít Ngọt tự tin là điểm đến tuyệt vời cho những người yêu bánh
+          ngọt, muốn khám phá và tự tay tạo nên những hương vị và trải nghiệm mới mẻ.</li>
+        <li>Bạn có thể đến quán để cảm nhận hương vị thơm ngon, béo ngậy từ những chiếc bánh được làm hết sức có tâm và
+          công phu. Ngoài ra, chất lượng của những chiếc bánh ngọt tạo ra tại đây cũng được đánh giá khá cao với hương
+          vị thơm lành và dễ ăn. Những buổi workshop làm bánh tại quán sẽ hướng dẫn bạn những kỹ năng từ cơ bản đến nâng
+          cao để tạo ra một chiếc bánh chất lượng.</li>
+        <li>Bạn cũng có thể thoải mái sáng tạo, biến tấu để tạo ra một chiếc bánh vừa mắt và mang dấu ấn riêng cho bản
+          thân. Đây thực sự là cơ hội để cho mọi người thể hiện sự sáng tạo và tận hưởng niềm vui khi chính tay mình tạo
+          nên những chiếc bánh độc nhất.</li>
+      </ul>
+      <div class="contact">
+        <div class="xx">
+          <ul>
+            <li>📌Địa chỉ: 101 đường 49 phường Tân Tạo Quận Bình Tân, TP HCM</li>
+            <li>📞Điện thoại: 0775 584 277</li>
+            <li>📩Email: lpqu0512@gmail.com</li>
+            <li>🌍Website: <a href="http://cakebyuyen.com/">cakebyuyen.com</a></li>
+            <li>📚Fanpage: <a href="https://www.facebook.com/CakeByUyen">Cake By Uyen</a></li>
+            <li>🕒Giờ mở cửa: 15h30 – 17h30 ( T5, T7 và CN) ; 09h00 – 11h00 (T4, T6 và CN)</li>
+            <li>🕒Giá tham khảo: 280.000 - 495.000 VND, người thứ 2 đi cùng phụ thu 30.000 VND</li>
+          </ul>
+        </div>
+        <img src="../assets/workshop/b1.jpg" alt="">
+      </div>
+      <br>
+      <p>❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</p>
+    </section>
+
+    <section>
+      <h1>Tiệm bánh Măm Măm</h1>
+      <ul>
+        <li>Tiệm Bánh Măm Măm sẽ là nơi để cho bạn tha hồ sáng tạo, nơi những ý tưởng làm bánh ngọt ấp ủ của bạn sẽ trở
+          thành hiện thực. Bởi tiệm bánh thường xuyên tổ chức những buổi workshop làm bánh, trang bị đầy đủ những vật
+          dụng, nguyên vật liệu, thiết bị làm bánh vô cùng chuyên nghiệp.</li>
+        <li>Nếu bạn là người chưa giỏi trong việc làm bánh thì cũng đừng quá lo lắng. Về quy trình làm bánh, kem bơ và
+          cốt bánh sẽ được Măm Măm chuẩn bị từ trước. Việc của bạn là chọn mẫu, tạo nhân bánh, chà láng và trang trí
+          trong 2 giờ.</li>
+        <li>Ngoài ra, khi tham gia workshop, bạn sẽ được hỗ trợ, hướng dẫn bởi những nhân viên thân thiện và vô cùng tận
+          tâm giúp bạn tạo ra chiếc bánh yêu thích với kiểu dáng và hương vị tươi ngon.</li>
+        <li><strong>Lưu ý:</strong> Khi đăng ký workshop, bạn nên chuyển khoản trước 30% để đặt chỗ nhé!</li>
+      </ul>
+      <div class="contact">
+        <div class="xx">
+          <ul>
+            <li>📌Địa chỉ: 195/38 Xô Viết Nghệ Tĩnh, Phường 17, Quận Bình Thạnh, TP HCM</li>
+            <li>📞Điện thoại: 0932 837 868</li>
+            <li>📩Email: tiembanhmammam@gmail.com</li>
+            <li>🌍Website: <a href="https://beacons.ai/tiembanhmammam">https://beacons.ai/tiembanhmammam</a></li>
+            <li>📚Fanpage: <a
+                href="https://www.facebook.com/mammamcakeworkshop">https://www.facebook.com/mammamcakeworkshop</a></li>
+            <li>🕒Giờ mở cửa: 10:00 - 20:00 các ngày trong tuần</li>
+            <li>🕒Giá tham khảo: từ 550.000 VND</li>
+          </ul>
+        </div>
+        <img src="../assets/workshop/b2.jpg" alt="">
+      </div>
+      <br>
+      <p>❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</p>
+    </section>
+
+    <section>
+      <h1>The Open Space</h1>
+      <ul>
+        <li>The Open Space sẽ mang đến không gian trải nghiệm làm bánh trọn vẹn với những buổi workshop thú vị. Đây cũng
+          chính là nơi hẹn hò, thư giãn nếu bạn muốn đổi gió cho những buổi hẹn cuối tuần.</li>
+        <li>Từng dụng cụ và nguyên vật liệu sẽ được The Open Space trang bị đầy đủ để làm bánh trong một không gian ấm
+          cúng và thoải mái. Những nhân viên tại đây sẽ nhiệt tình hỗ trợ, hướng dẫn bạn để làm nên những chiếc bánh
+          thơm ngon nhất.</li>
+        <li>Thông thường, workshop làm bánh tại The Open Space được mở định kỳ và giới hạn số lượng người tham gia. Sau
+          mỗi khóa học, bạn không chỉ nhận được những hộp bánh do chính tay mình làm ra mà còn học được nhiều kiến thức
+          bổ ích từ việc làm bánh đấy!</li>
+      </ul>
+      <div class="contact">
+        <div class="xx">
+          <ul>
+            <li>📌Cơ sở 1: 03 Hoa Lan, Phường 2, Quận Phú Nhuận, TP. HCM</li>
+            <li>📌Cơ sở 2: 11 Đường 31D, Phường An Phú, TP. Thủ Đức, TP. HCM</li>
+            <li>📞Điện thoại: 0777 716 201</li>
+            <li>📩Email: <a href="mailto:hello@the-openspace.com">hello@the-openspace.com</a></li>
+            <li>🌍Website: <a href="http://www.the-openspace.com/">http://www.the-openspace.com/</a></li>
+            <li>📚Fanpage: <a
+                href="https://www.facebook.com/theopenspacevn/">https://www.facebook.com/theopenspacevn/</a>
+            </li>
+            <li>🕒Giờ mở cửa: 9:00 - 18:00 các ngày trong tuần</li>
+            <li>🕒Giá tham khảo: 300.000 - 450.000 VND</li>
+          </ul>
+        </div>
+        <img src="../assets/workshop/b3.jpg" alt="">
+      </div>
+      <br>
+      <p>❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</p>
+    </section>
+  </main>
+</body>
+
+</html>
